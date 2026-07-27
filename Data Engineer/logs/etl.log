@@ -1,0 +1,212 @@
+2026-07-27 15:21:17.060 | INFO     | __main__:<module>:3 - Logger initialized.
+2026-07-27 15:21:17.060 | WARNING  | __main__:<module>:4 - This is a warning.
+2026-07-27 15:21:17.060 | ERROR    | __main__:<module>:5 - This is an error.
+2026-07-27 15:21:17.060 | SUCCESS  | __main__:<module>:6 - Logger works!
+2026-07-27 15:25:38.083 | INFO     | scripts.load:load_dataframe:37 - Loading dataframe to raw.sales
+2026-07-27 15:27:02.905 | SUCCESS  | scripts.load:load_dataframe:51 - 190757 rows loaded into raw.sales
+2026-07-27 15:33:36.187 | INFO     | scripts.validate:validate_data:25 - Starting data validation...
+2026-07-27 15:33:36.251 | INFO     | scripts.validate:validate_data:33 - No missing values found.
+2026-07-27 15:33:36.447 | INFO     | scripts.validate:validate_data:41 - No duplicate rows found.
+2026-07-27 15:33:36.450 | INFO     | scripts.validate:validate_data:47 - Promotion flag is valid.
+2026-07-27 15:33:36.452 | INFO     | scripts.validate:validate_data:66 - delivery_days validation passed.
+2026-07-27 15:33:36.454 | WARNING  | scripts.validate:validate_data:64 - stock_available contains 3 negative values.
+2026-07-27 15:33:36.456 | WARNING  | scripts.validate:validate_data:64 - delivered_qty contains 3 negative values.
+2026-07-27 15:33:36.457 | WARNING  | scripts.validate:validate_data:64 - units_sold contains 3 negative values.
+2026-07-27 15:33:36.458 | SUCCESS  | scripts.validate:validate_data:68 - Validation completed.
+2026-07-27 15:38:28.722 | INFO     | scripts.validate:validate_data:29 - Starting data validation...
+2026-07-27 15:38:28.779 | INFO     | scripts.validate:validate_data:37 - No missing values found.
+2026-07-27 15:38:28.935 | INFO     | scripts.validate:validate_data:45 - No duplicate rows found.
+2026-07-27 15:38:28.940 | INFO     | scripts.validate:validate_data:53 - Promotion flag is valid.
+2026-07-27 15:38:28.944 | WARNING  | scripts.validate:validate_data:73 - stock_available contains 3 negative values.
+2026-07-27 15:38:28.944 | WARNING  | scripts.validate:validate_data:73 - delivered_qty contains 3 negative values.
+2026-07-27 15:38:28.945 | WARNING  | scripts.validate:validate_data:73 - units_sold contains 3 negative values.
+2026-07-27 15:38:28.946 | INFO     | scripts.validate:validate_data:75 - delivery_days validation passed.
+2026-07-27 15:38:28.946 | SUCCESS  | scripts.validate:validate_data:87 - Validation completed.
+2026-07-27 15:41:23.781 | INFO     | scripts.validate:validate_data:29 - Starting data validation...
+2026-07-27 15:41:23.855 | INFO     | scripts.validate:validate_data:37 - No missing values found.
+2026-07-27 15:41:24.001 | INFO     | scripts.validate:validate_data:45 - No duplicate rows found.
+2026-07-27 15:41:24.019 | INFO     | scripts.validate:validate_data:53 - Promotion flag is valid.
+2026-07-27 15:41:24.019 | WARNING  | scripts.validate:validate_data:73 - stock_available contains 3 negative values.
+2026-07-27 15:41:24.019 | WARNING  | scripts.validate:validate_data:73 - delivered_qty contains 3 negative values.
+2026-07-27 15:41:24.019 | WARNING  | scripts.validate:validate_data:73 - units_sold contains 3 negative values.
+2026-07-27 15:41:24.019 | INFO     | scripts.validate:validate_data:75 - delivery_days validation passed.
+2026-07-27 15:41:24.019 | SUCCESS  | scripts.validate:validate_data:87 - Validation completed.
+2026-07-27 15:41:24.019 | INFO     | scripts.clean:clean_data:25 - Starting data cleaning...
+2026-07-27 15:41:24.057 | INFO     | scripts.clean:clean_data:32 - Date converted to datetime.
+2026-07-27 15:41:24.315 | INFO     | scripts.clean:clean_data:42 - String columns cleaned.
+2026-07-27 15:41:24.326 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'stock_available'.
+2026-07-27 15:41:24.332 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'delivered_qty'.
+2026-07-27 15:41:24.334 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'units_sold'.
+2026-07-27 15:41:24.335 | SUCCESS  | scripts.clean:clean_data:66 - Data cleaning completed.
+2026-07-27 15:48:22.846 | INFO     | scripts.validate:validate_data:29 - Starting data validation...
+2026-07-27 15:48:22.911 | INFO     | scripts.validate:validate_data:37 - No missing values found.
+2026-07-27 15:48:23.074 | INFO     | scripts.validate:validate_data:45 - No duplicate rows found.
+2026-07-27 15:48:23.077 | INFO     | scripts.validate:validate_data:53 - Promotion flag is valid.
+2026-07-27 15:48:23.077 | WARNING  | scripts.validate:validate_data:73 - stock_available contains 3 negative values.
+2026-07-27 15:48:23.077 | WARNING  | scripts.validate:validate_data:73 - delivered_qty contains 3 negative values.
+2026-07-27 15:48:23.077 | WARNING  | scripts.validate:validate_data:73 - units_sold contains 3 negative values.
+2026-07-27 15:48:23.077 | INFO     | scripts.validate:validate_data:75 - delivery_days validation passed.
+2026-07-27 15:48:23.077 | SUCCESS  | scripts.validate:validate_data:87 - Validation completed.
+2026-07-27 15:48:23.077 | INFO     | scripts.clean:clean_data:25 - Starting data cleaning...
+2026-07-27 15:48:23.162 | INFO     | scripts.clean:clean_data:32 - Date converted to datetime.
+2026-07-27 15:48:23.424 | INFO     | scripts.clean:clean_data:42 - String columns cleaned.
+2026-07-27 15:48:23.442 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'stock_available'.
+2026-07-27 15:48:23.446 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'delivered_qty'.
+2026-07-27 15:48:23.448 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'units_sold'.
+2026-07-27 15:48:23.448 | SUCCESS  | scripts.clean:clean_data:66 - Data cleaning completed.
+2026-07-27 15:48:23.448 | INFO     | scripts.transform:transform_data:25 - Starting feature engineering...
+2026-07-27 15:48:23.576 | SUCCESS  | scripts.transform:transform_data:65 - Feature engineering completed.
+2026-07-27 15:52:25.188 | INFO     | scripts.validate:validate_data:29 - Starting data validation...
+2026-07-27 15:52:25.253 | INFO     | scripts.validate:validate_data:37 - No missing values found.
+2026-07-27 15:52:25.423 | INFO     | scripts.validate:validate_data:45 - No duplicate rows found.
+2026-07-27 15:52:25.426 | INFO     | scripts.validate:validate_data:53 - Promotion flag is valid.
+2026-07-27 15:52:25.426 | WARNING  | scripts.validate:validate_data:73 - stock_available contains 3 negative values.
+2026-07-27 15:52:25.426 | WARNING  | scripts.validate:validate_data:73 - delivered_qty contains 3 negative values.
+2026-07-27 15:52:25.426 | WARNING  | scripts.validate:validate_data:73 - units_sold contains 3 negative values.
+2026-07-27 15:52:25.426 | INFO     | scripts.validate:validate_data:75 - delivery_days validation passed.
+2026-07-27 15:52:25.426 | SUCCESS  | scripts.validate:validate_data:87 - Validation completed.
+2026-07-27 15:52:25.426 | INFO     | scripts.clean:clean_data:25 - Starting data cleaning...
+2026-07-27 15:52:25.465 | INFO     | scripts.clean:clean_data:32 - Date converted to datetime.
+2026-07-27 15:52:25.746 | INFO     | scripts.clean:clean_data:42 - String columns cleaned.
+2026-07-27 15:52:25.762 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'stock_available'.
+2026-07-27 15:52:25.769 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'delivered_qty'.
+2026-07-27 15:52:25.772 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'units_sold'.
+2026-07-27 15:52:25.773 | SUCCESS  | scripts.clean:clean_data:66 - Data cleaning completed.
+2026-07-27 15:52:25.773 | INFO     | scripts.transform:transform_data:25 - Starting feature engineering...
+2026-07-27 15:52:25.897 | SUCCESS  | scripts.transform:transform_data:65 - Feature engineering completed.
+2026-07-27 16:00:54.133 | INFO     | scripts.validate:validate_data:29 - Starting data validation...
+2026-07-27 16:00:54.187 | INFO     | scripts.validate:validate_data:37 - No missing values found.
+2026-07-27 16:00:54.351 | INFO     | scripts.validate:validate_data:45 - No duplicate rows found.
+2026-07-27 16:00:54.351 | INFO     | scripts.validate:validate_data:53 - Promotion flag is valid.
+2026-07-27 16:00:54.351 | WARNING  | scripts.validate:validate_data:73 - stock_available contains 3 negative values.
+2026-07-27 16:00:54.351 | WARNING  | scripts.validate:validate_data:73 - delivered_qty contains 3 negative values.
+2026-07-27 16:00:54.351 | WARNING  | scripts.validate:validate_data:73 - units_sold contains 3 negative values.
+2026-07-27 16:00:54.351 | INFO     | scripts.validate:validate_data:75 - delivery_days validation passed.
+2026-07-27 16:00:54.351 | SUCCESS  | scripts.validate:validate_data:87 - Validation completed.
+2026-07-27 16:00:54.351 | INFO     | scripts.clean:clean_data:25 - Starting data cleaning...
+2026-07-27 16:00:54.387 | INFO     | scripts.clean:clean_data:32 - Date converted to datetime.
+2026-07-27 16:00:54.634 | INFO     | scripts.clean:clean_data:42 - String columns cleaned.
+2026-07-27 16:00:54.634 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'stock_available'.
+2026-07-27 16:00:54.644 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'delivered_qty'.
+2026-07-27 16:00:54.648 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'units_sold'.
+2026-07-27 16:00:54.649 | SUCCESS  | scripts.clean:clean_data:66 - Data cleaning completed.
+2026-07-27 16:00:54.650 | INFO     | scripts.transform:transform_data:25 - Starting feature engineering...
+2026-07-27 16:00:54.768 | SUCCESS  | scripts.transform:transform_data:65 - Feature engineering completed.
+2026-07-27 16:00:54.768 | INFO     | scripts.load:load_dataframe:37 - Loading dataframe to analytics.sales
+2026-07-27 16:02:49.520 | SUCCESS  | scripts.load:load_dataframe:51 - 190757 rows loaded into analytics.sales
+2026-07-27 16:07:34.629 | INFO     | scripts.export:export_dataset:25 - Exporting analytics dataset...
+2026-07-27 16:07:42.465 | SUCCESS  | scripts.export:export_dataset:41 - 190757 rows exported.
+2026-07-27 16:07:42.465 | SUCCESS  | scripts.export:export_dataset:43 - Dataset saved to output\forecasting_dataset.csv
+2026-07-27 16:38:58.872 | INFO     | __main__:main:22 - ========== ETL PIPELINE START ==========
+2026-07-27 16:38:58.884 | INFO     | __main__:main:27 - Step 1: Extract
+2026-07-27 16:38:59.181 | INFO     | __main__:main:33 - Step 2: Load Raw
+2026-07-27 16:38:59.181 | INFO     | scripts.load:load_dataframe:37 - Loading dataframe to raw.sales
+2026-07-27 16:40:15.619 | SUCCESS  | scripts.load:load_dataframe:51 - 190757 rows loaded into raw.sales
+2026-07-27 16:40:15.619 | INFO     | __main__:main:44 - Step 3: Validate
+2026-07-27 16:40:15.619 | INFO     | scripts.validate:validate_data:29 - Starting data validation...
+2026-07-27 16:40:15.689 | INFO     | scripts.validate:validate_data:37 - No missing values found.
+2026-07-27 16:40:15.851 | INFO     | scripts.validate:validate_data:45 - No duplicate rows found.
+2026-07-27 16:40:15.851 | INFO     | scripts.validate:validate_data:53 - Promotion flag is valid.
+2026-07-27 16:40:15.851 | WARNING  | scripts.validate:validate_data:73 - stock_available contains 3 negative values.
+2026-07-27 16:40:15.851 | WARNING  | scripts.validate:validate_data:73 - delivered_qty contains 3 negative values.
+2026-07-27 16:40:15.851 | WARNING  | scripts.validate:validate_data:73 - units_sold contains 3 negative values.
+2026-07-27 16:40:15.851 | INFO     | scripts.validate:validate_data:75 - delivery_days validation passed.
+2026-07-27 16:40:15.851 | SUCCESS  | scripts.validate:validate_data:87 - Validation completed.
+2026-07-27 16:40:15.851 | INFO     | __main__:main:47 - Validation Summary: {'missing_values': 0, 'duplicates': 0, 'negative_stock': 3, 'negative_delivered_qty': 3, 'negative_units_sold': 3, 'negative_delivery_days': 0, 'promotion_flag_valid': True}
+2026-07-27 16:40:15.851 | INFO     | __main__:main:52 - Step 4: Clean
+2026-07-27 16:40:15.851 | INFO     | scripts.clean:clean_data:25 - Starting data cleaning...
+2026-07-27 16:40:15.888 | INFO     | scripts.clean:clean_data:32 - Date converted to datetime.
+2026-07-27 16:40:16.186 | INFO     | scripts.clean:clean_data:42 - String columns cleaned.
+2026-07-27 16:40:16.186 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'stock_available'.
+2026-07-27 16:40:16.200 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'delivered_qty'.
+2026-07-27 16:40:16.201 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'units_sold'.
+2026-07-27 16:40:16.201 | SUCCESS  | scripts.clean:clean_data:66 - Data cleaning completed.
+2026-07-27 16:40:16.201 | INFO     | __main__:main:58 - Step 5: Transform
+2026-07-27 16:40:16.201 | INFO     | scripts.transform:transform_data:25 - Starting feature engineering...
+2026-07-27 16:40:16.326 | SUCCESS  | scripts.transform:transform_data:65 - Feature engineering completed.
+2026-07-27 16:40:16.328 | INFO     | __main__:main:64 - Step 6: Load Analytics
+2026-07-27 16:40:16.328 | INFO     | scripts.load:load_dataframe:37 - Loading dataframe to analytics.sales
+2026-07-27 16:42:11.765 | SUCCESS  | scripts.load:load_dataframe:51 - 190757 rows loaded into analytics.sales
+2026-07-27 16:42:11.765 | INFO     | __main__:main:76 - Step 7: Export
+2026-07-27 16:42:11.765 | INFO     | scripts.export:export_dataset:25 - Exporting analytics dataset...
+2026-07-27 16:42:18.858 | SUCCESS  | scripts.export:export_dataset:41 - 190757 rows exported.
+2026-07-27 16:42:18.858 | SUCCESS  | scripts.export:export_dataset:43 - Dataset saved to output\forecasting_dataset.csv
+2026-07-27 16:42:18.938 | SUCCESS  | __main__:main:80 - ========== ETL PIPELINE FINISHED ==========
+2026-07-27 16:49:33.560 | INFO     | scripts.etl_pipeline:run_pipeline:22 - ============================================================
+2026-07-27 16:49:33.560 | INFO     | scripts.etl_pipeline:run_pipeline:23 - START ETL PIPELINE
+2026-07-27 16:49:33.560 | INFO     | scripts.etl_pipeline:run_pipeline:24 - ============================================================
+2026-07-27 16:49:33.562 | INFO     | scripts.etl_pipeline:run_pipeline:27 - Step 1/7 : Extract
+2026-07-27 16:49:33.816 | INFO     | scripts.etl_pipeline:run_pipeline:31 - Step 2/7 : Load Raw
+2026-07-27 16:49:33.816 | INFO     | scripts.load:load_dataframe:37 - Loading dataframe to raw.sales
+2026-07-27 16:50:49.882 | SUCCESS  | scripts.load:load_dataframe:51 - 190757 rows loaded into raw.sales
+2026-07-27 16:50:49.882 | INFO     | scripts.etl_pipeline:run_pipeline:40 - Step 3/7 : Validate
+2026-07-27 16:50:49.882 | INFO     | scripts.validate:validate_data:29 - Starting data validation...
+2026-07-27 16:50:49.945 | INFO     | scripts.validate:validate_data:37 - No missing values found.
+2026-07-27 16:50:50.088 | INFO     | scripts.validate:validate_data:45 - No duplicate rows found.
+2026-07-27 16:50:50.097 | INFO     | scripts.validate:validate_data:53 - Promotion flag is valid.
+2026-07-27 16:50:50.103 | WARNING  | scripts.validate:validate_data:73 - stock_available contains 3 negative values.
+2026-07-27 16:50:50.103 | WARNING  | scripts.validate:validate_data:73 - delivered_qty contains 3 negative values.
+2026-07-27 16:50:50.104 | WARNING  | scripts.validate:validate_data:73 - units_sold contains 3 negative values.
+2026-07-27 16:50:50.104 | INFO     | scripts.validate:validate_data:75 - delivery_days validation passed.
+2026-07-27 16:50:50.104 | SUCCESS  | scripts.validate:validate_data:87 - Validation completed.
+2026-07-27 16:50:50.105 | INFO     | scripts.etl_pipeline:run_pipeline:43 - Validation Summary: {'missing_values': 0, 'duplicates': 0, 'negative_stock': 3, 'negative_delivered_qty': 3, 'negative_units_sold': 3, 'negative_delivery_days': 0, 'promotion_flag_valid': True}
+2026-07-27 16:50:50.105 | INFO     | scripts.etl_pipeline:run_pipeline:46 - Step 4/7 : Clean
+2026-07-27 16:50:50.106 | INFO     | scripts.clean:clean_data:25 - Starting data cleaning...
+2026-07-27 16:50:50.138 | INFO     | scripts.clean:clean_data:32 - Date converted to datetime.
+2026-07-27 16:50:50.382 | INFO     | scripts.clean:clean_data:42 - String columns cleaned.
+2026-07-27 16:50:50.382 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'stock_available'.
+2026-07-27 16:50:50.397 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'delivered_qty'.
+2026-07-27 16:50:50.400 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'units_sold'.
+2026-07-27 16:50:50.402 | SUCCESS  | scripts.clean:clean_data:66 - Data cleaning completed.
+2026-07-27 16:50:50.402 | INFO     | scripts.etl_pipeline:run_pipeline:50 - Step 5/7 : Transform
+2026-07-27 16:50:50.402 | INFO     | scripts.transform:transform_data:25 - Starting feature engineering...
+2026-07-27 16:50:50.519 | SUCCESS  | scripts.transform:transform_data:65 - Feature engineering completed.
+2026-07-27 16:50:50.519 | INFO     | scripts.etl_pipeline:run_pipeline:54 - Step 6/7 : Load Analytics
+2026-07-27 16:50:50.519 | INFO     | scripts.load:load_dataframe:37 - Loading dataframe to analytics.sales
+2026-07-27 16:52:40.153 | SUCCESS  | scripts.load:load_dataframe:51 - 190757 rows loaded into analytics.sales
+2026-07-27 16:52:40.154 | INFO     | scripts.etl_pipeline:run_pipeline:64 - Step 7/7 : Export
+2026-07-27 16:52:40.154 | INFO     | scripts.export:export_dataset:25 - Exporting analytics dataset...
+2026-07-27 16:52:46.950 | SUCCESS  | scripts.export:export_dataset:41 - 190757 rows exported.
+2026-07-27 16:52:46.965 | SUCCESS  | scripts.export:export_dataset:43 - Dataset saved to output\forecasting_dataset.csv
+2026-07-27 16:52:47.070 | SUCCESS  | scripts.etl_pipeline:run_pipeline:68 - ============================================================
+2026-07-27 16:52:47.070 | SUCCESS  | scripts.etl_pipeline:run_pipeline:69 - ETL PIPELINE FINISHED
+2026-07-27 16:52:47.070 | SUCCESS  | scripts.etl_pipeline:run_pipeline:70 - ============================================================
+2026-07-27 16:57:20.077 | INFO     | scripts.etl_pipeline:run_pipeline:79 - ============================================================
+2026-07-27 16:57:20.077 | INFO     | scripts.etl_pipeline:run_pipeline:80 - START ETL PIPELINE
+2026-07-27 16:57:20.077 | INFO     | scripts.etl_pipeline:run_pipeline:81 - ============================================================
+2026-07-27 16:57:20.077 | INFO     | scripts.etl_pipeline:run_extract:19 - Step 1/7 : Extract
+2026-07-27 16:57:20.366 | INFO     | scripts.etl_pipeline:run_load_raw:25 - Step 2/7 : Load Raw
+2026-07-27 16:57:20.366 | INFO     | scripts.load:load_dataframe:37 - Loading dataframe to raw.sales
+2026-07-27 16:58:33.762 | SUCCESS  | scripts.load:load_dataframe:51 - 190757 rows loaded into raw.sales
+2026-07-27 16:58:33.763 | INFO     | scripts.etl_pipeline:run_validate:37 - Step 3/7 : Validate
+2026-07-27 16:58:33.763 | INFO     | scripts.validate:validate_data:29 - Starting data validation...
+2026-07-27 16:58:33.824 | INFO     | scripts.validate:validate_data:37 - No missing values found.
+2026-07-27 16:58:33.977 | INFO     | scripts.validate:validate_data:45 - No duplicate rows found.
+2026-07-27 16:58:33.981 | INFO     | scripts.validate:validate_data:53 - Promotion flag is valid.
+2026-07-27 16:58:33.985 | WARNING  | scripts.validate:validate_data:73 - stock_available contains 3 negative values.
+2026-07-27 16:58:33.986 | WARNING  | scripts.validate:validate_data:73 - delivered_qty contains 3 negative values.
+2026-07-27 16:58:33.986 | WARNING  | scripts.validate:validate_data:73 - units_sold contains 3 negative values.
+2026-07-27 16:58:33.986 | INFO     | scripts.validate:validate_data:75 - delivery_days validation passed.
+2026-07-27 16:58:33.986 | SUCCESS  | scripts.validate:validate_data:87 - Validation completed.
+2026-07-27 16:58:33.988 | INFO     | scripts.etl_pipeline:run_validate:41 - Validation Summary: {'missing_values': 0, 'duplicates': 0, 'negative_stock': 3, 'negative_delivered_qty': 3, 'negative_units_sold': 3, 'negative_delivery_days': 0, 'promotion_flag_valid': True}
+2026-07-27 16:58:33.988 | INFO     | scripts.etl_pipeline:run_clean:48 - Step 4/7 : Clean
+2026-07-27 16:58:33.988 | INFO     | scripts.clean:clean_data:25 - Starting data cleaning...
+2026-07-27 16:58:34.012 | INFO     | scripts.clean:clean_data:32 - Date converted to datetime.
+2026-07-27 16:58:34.265 | INFO     | scripts.clean:clean_data:42 - String columns cleaned.
+2026-07-27 16:58:34.265 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'stock_available'.
+2026-07-27 16:58:34.265 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'delivered_qty'.
+2026-07-27 16:58:34.275 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'units_sold'.
+2026-07-27 16:58:34.276 | SUCCESS  | scripts.clean:clean_data:66 - Data cleaning completed.
+2026-07-27 16:58:34.276 | INFO     | scripts.etl_pipeline:run_transform:54 - Step 5/7 : Transform
+2026-07-27 16:58:34.276 | INFO     | scripts.transform:transform_data:25 - Starting feature engineering...
+2026-07-27 16:58:34.401 | SUCCESS  | scripts.transform:transform_data:65 - Feature engineering completed.
+2026-07-27 16:58:34.401 | INFO     | scripts.etl_pipeline:run_load_analytics:60 - Step 6/7 : Load Analytics
+2026-07-27 16:58:34.401 | INFO     | scripts.load:load_dataframe:37 - Loading dataframe to analytics.sales
+2026-07-27 17:00:24.787 | SUCCESS  | scripts.load:load_dataframe:51 - 190757 rows loaded into analytics.sales
+2026-07-27 17:00:24.787 | INFO     | scripts.etl_pipeline:run_export:72 - Step 7/7 : Export
+2026-07-27 17:00:24.788 | INFO     | scripts.export:export_dataset:25 - Exporting analytics dataset...
+2026-07-27 17:00:31.807 | SUCCESS  | scripts.export:export_dataset:41 - 190757 rows exported.
+2026-07-27 17:00:31.807 | SUCCESS  | scripts.export:export_dataset:43 - Dataset saved to output\forecasting_dataset.csv
+2026-07-27 17:00:31.895 | SUCCESS  | scripts.etl_pipeline:run_pipeline:97 - ============================================================
+2026-07-27 17:00:31.897 | SUCCESS  | scripts.etl_pipeline:run_pipeline:98 - ETL PIPELINE FINISHED
+2026-07-27 17:00:31.897 | SUCCESS  | scripts.etl_pipeline:run_pipeline:99 - ============================================================
