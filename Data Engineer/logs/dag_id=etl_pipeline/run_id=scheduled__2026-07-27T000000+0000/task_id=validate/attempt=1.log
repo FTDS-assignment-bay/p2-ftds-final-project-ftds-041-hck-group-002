@@ -1,0 +1,60 @@
+[2026-07-28T03:16:19.895+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-07-28T03:16:19.985+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_pipeline.validate scheduled__2026-07-27T00:00:00+00:00 [queued]>
+[2026-07-28T03:16:20.031+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_pipeline.validate scheduled__2026-07-27T00:00:00+00:00 [queued]>
+[2026-07-28T03:16:20.033+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2026-07-28T03:16:20.090+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): validate> on 2026-07-27 00:00:00+00:00
+[2026-07-28T03:16:20.118+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'etl_pipeline', 'validate', 'scheduled__2026-07-27T00:00:00+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/etl_pipeline_dag.py', '--cfg-path', '/tmp/tmpf2fgdpns']
+[2026-07-28T03:16:20.126+0000] {standard_task_runner.py:105} INFO - Job 16: Subtask validate
+[2026-07-28T03:16:20.127+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=257) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-07-28T03:16:20.129+0000] {standard_task_runner.py:72} INFO - Started process 262 to run task
+[2026-07-28T03:16:20.291+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_pipeline.validate scheduled__2026-07-27T00:00:00+00:00 [running]> on host 0108fe196489
+[2026-07-28T03:16:20.480+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ForecastLab' AIRFLOW_CTX_DAG_ID='etl_pipeline' AIRFLOW_CTX_TASK_ID='validate' AIRFLOW_CTX_EXECUTION_DATE='2026-07-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-07-27T00:00:00+00:00'
+[2026-07-28T03:16:20.482+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-07-28T03:16:20.510+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:20.509 | INFO     | scripts.***_tasks:task_validate:39 - Airflow : Validate
+[2026-07-28T03:16:20.513+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:20.512 | INFO     | scripts.load:read_dataframe:68 - Reading data from raw.sales
+[2026-07-28T03:16:27.193+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:27.192 | SUCCESS  | scripts.load:read_dataframe:76 - 190757 rows read from raw.sales
+[2026-07-28T03:16:27.195+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:27.194 | INFO     | scripts.validate:validate_data:29 - Starting data validation...
+[2026-07-28T03:16:27.380+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:27.379 | INFO     | scripts.validate:validate_data:37 - No missing values found.
+[2026-07-28T03:16:27.759+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:27.758 | INFO     | scripts.validate:validate_data:45 - No duplicate rows found.
+[2026-07-28T03:16:27.762+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:27.762 | INFO     | scripts.validate:validate_data:53 - Promotion flag is valid.
+[2026-07-28T03:16:27.767+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:27.767 | WARNING  | scripts.validate:validate_data:73 - stock_available contains 3 negative values.
+[2026-07-28T03:16:27.770+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:27.769 | WARNING  | scripts.validate:validate_data:73 - delivered_qty contains 3 negative values.
+[2026-07-28T03:16:27.772+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:27.771 | WARNING  | scripts.validate:validate_data:73 - units_sold contains 3 negative values.
+[2026-07-28T03:16:27.774+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:27.773 | INFO     | scripts.validate:validate_data:75 - delivery_days validation passed.
+[2026-07-28T03:16:27.775+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:27.775 | SUCCESS  | scripts.validate:validate_data:87 - Validation completed.
+[2026-07-28T03:16:27.882+0000] {python.py:240} INFO - Done. Returned value was: None
+[2026-07-28T03:16:27.904+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-07-28T03:16:27.905+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_pipeline, task_id=validate, run_id=scheduled__2026-07-27T00:00:00+00:00, execution_date=20260727T000000, start_date=20260728T031619, end_date=20260728T031627
+[2026-07-28T03:16:28.011+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-07-28T03:16:28.054+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-07-28T03:16:28.058+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2026-07-28T03:32:40.485+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-07-28T03:32:40.515+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_pipeline.validate scheduled__2026-07-27T00:00:00+00:00 [queued]>
+[2026-07-28T03:32:40.527+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_pipeline.validate scheduled__2026-07-27T00:00:00+00:00 [queued]>
+[2026-07-28T03:32:40.528+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2026-07-28T03:32:40.552+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): validate> on 2026-07-27 00:00:00+00:00
+[2026-07-28T03:32:40.568+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'etl_pipeline', 'validate', 'scheduled__2026-07-27T00:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/etl_pipeline_dag.py', '--cfg-path', '/tmp/tmpmbc6_9qu']
+[2026-07-28T03:32:40.574+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=198) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-07-28T03:32:40.575+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask validate
+[2026-07-28T03:32:40.576+0000] {standard_task_runner.py:72} INFO - Started process 200 to run task
+[2026-07-28T03:32:40.690+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_pipeline.validate scheduled__2026-07-27T00:00:00+00:00 [running]> on host 1a8d21ac42c7
+[2026-07-28T03:32:40.829+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ForecastLab' AIRFLOW_CTX_DAG_ID='etl_pipeline' AIRFLOW_CTX_TASK_ID='validate' AIRFLOW_CTX_EXECUTION_DATE='2026-07-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-07-27T00:00:00+00:00'
+[2026-07-28T03:32:40.844+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-07-28T03:32:40.902+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:32:40.901 | INFO     | scripts.***_tasks:task_validate:39 - Airflow : Validate
+[2026-07-28T03:32:40.904+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:32:40.904 | INFO     | scripts.load:read_dataframe:68 - Reading data from raw.sales
+[2026-07-28T03:32:46.296+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:32:46.296 | SUCCESS  | scripts.load:read_dataframe:76 - 190757 rows read from raw.sales
+[2026-07-28T03:32:46.299+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:32:46.299 | INFO     | scripts.validate:validate_data:29 - Starting data validation...
+[2026-07-28T03:32:46.443+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:32:46.443 | INFO     | scripts.validate:validate_data:37 - No missing values found.
+[2026-07-28T03:32:46.754+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:32:46.753 | INFO     | scripts.validate:validate_data:45 - No duplicate rows found.
+[2026-07-28T03:32:46.758+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:32:46.757 | INFO     | scripts.validate:validate_data:53 - Promotion flag is valid.
+[2026-07-28T03:32:46.763+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:32:46.762 | WARNING  | scripts.validate:validate_data:73 - stock_available contains 3 negative values.
+[2026-07-28T03:32:46.766+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:32:46.765 | WARNING  | scripts.validate:validate_data:73 - delivered_qty contains 3 negative values.
+[2026-07-28T03:32:46.768+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:32:46.767 | WARNING  | scripts.validate:validate_data:73 - units_sold contains 3 negative values.
+[2026-07-28T03:32:46.770+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:32:46.769 | INFO     | scripts.validate:validate_data:75 - delivery_days validation passed.
+[2026-07-28T03:32:46.771+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:32:46.771 | SUCCESS  | scripts.validate:validate_data:87 - Validation completed.
+[2026-07-28T03:32:46.852+0000] {python.py:240} INFO - Done. Returned value was: None
+[2026-07-28T03:32:46.871+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-07-28T03:32:46.872+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_pipeline, task_id=validate, run_id=scheduled__2026-07-27T00:00:00+00:00, execution_date=20260727T000000, start_date=20260728T033240, end_date=20260728T033246
+[2026-07-28T03:32:46.954+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-07-28T03:32:46.989+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-07-28T03:32:46.992+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

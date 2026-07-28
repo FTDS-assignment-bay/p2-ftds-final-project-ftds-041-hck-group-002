@@ -1,42 +1,59 @@
-version: "3.9"
-
-x-airflow-common: &airflow-common
-  image: apache/airflow:2.10.2
-  environment:
-    AIRFLOW__CORE__EXECUTOR: LocalExecutor
-    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
-    AIRFLOW__CORE__LOAD_EXAMPLES: "False"
-    AIRFLOW__CORE__FERNET_KEY: ""
-    AIRFLOW__WEBSERVER__SECRET_KEY: airflow_secret_key
-    PYTHONPATH: /opt/airflow
-  volumes:
-    - ./dags:/opt/airflow/dags
-    - ./logs:/opt/airflow/logs
-    - ./plugins:/opt/airflow/plugins
-    - .:/opt/airflow/project
-  depends_on:
-    postgres:
-      condition: service_healthy
-
 services:
 
   postgres:
     image: postgres:16
     container_name: airflow-postgres
+
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
       POSTGRES_DB: airflow
+
     ports:
       - "5433:5432"
+
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "airflow"]
       interval: 10s
+      timeout: 5s
       retries: 5
 
   airflow-init:
-    <<: *airflow-common
+
+    build:
+      context: .
+
     container_name: airflow-init
+
+    user: "${AIRFLOW_UID}:0"
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    environment:
+
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+
+      AIRFLOW__CORE__FERNET_KEY: ""
+
+      AIRFLOW__WEBSERVER__SECRET_KEY: airflow_secret_key
+
+      PYTHONPATH: /opt/airflow/project
+
+    volumes:
+      - .:/opt/airflow/project
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+
     command: >
       bash -c "
       airflow db migrate &&
@@ -46,17 +63,81 @@ services:
       --firstname Admin
       --lastname User
       --role Admin
-      --email admin@example.com
+      --email admin@example.com || true
       "
 
   airflow-webserver:
-    <<: *airflow-common
+
+    build:
+      context: .
+
     container_name: airflow-webserver
-    command: webserver
+
+    user: "${AIRFLOW_UID}:0"
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    environment:
+
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+
+      AIRFLOW__CORE__FERNET_KEY: ""
+
+      AIRFLOW__WEBSERVER__SECRET_KEY: airflow_secret_key
+
+      PYTHONPATH: /opt/airflow/project
+
+    volumes:
+      - .:/opt/airflow/project
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+
     ports:
       - "8080:8080"
 
+    command: webserver
+
   airflow-scheduler:
-    <<: *airflow-common
+
+    build:
+      context: .
+
     container_name: airflow-scheduler
+
+    user: "${AIRFLOW_UID}:0"
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    environment:
+
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+
+      AIRFLOW__CORE__FERNET_KEY: ""
+
+      AIRFLOW__WEBSERVER__SECRET_KEY: airflow_secret_key
+
+      PYTHONPATH: /opt/airflow/project
+
+    volumes:
+      - .:/opt/airflow/project
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+
     command: scheduler
+
+volumes:
+  postgres-db-volume:

@@ -1,0 +1,131 @@
+[2026-07-28T02:34:49.991+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-07-28T02:34:50.118+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_pipeline.extract_load_raw scheduled__2026-07-27T00:00:00+00:00 [queued]>
+[2026-07-28T02:34:50.161+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_pipeline.extract_load_raw scheduled__2026-07-27T00:00:00+00:00 [queued]>
+[2026-07-28T02:34:50.165+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2026-07-28T02:34:50.245+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): extract_load_raw> on 2026-07-27 00:00:00+00:00
+[2026-07-28T02:34:50.307+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'etl_pipeline', 'extract_load_raw', 'scheduled__2026-07-27T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/etl_pipeline_dag.py', '--cfg-path', '/tmp/tmpt82mtk6y']
+[2026-07-28T02:34:50.329+0000] {standard_task_runner.py:105} INFO - Job 5: Subtask extract_load_raw
+[2026-07-28T02:34:50.327+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=188) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-07-28T02:34:50.335+0000] {standard_task_runner.py:72} INFO - Started process 190 to run task
+[2026-07-28T02:34:50.552+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_pipeline.extract_load_raw scheduled__2026-07-27T00:00:00+00:00 [running]> on host 07a86d9d8a5b
+[2026-07-28T02:34:50.779+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ForecastLab' AIRFLOW_CTX_DAG_ID='etl_pipeline' AIRFLOW_CTX_TASK_ID='extract_load_raw' AIRFLOW_CTX_EXECUTION_DATE='2026-07-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-07-27T00:00:00+00:00'
+[2026-07-28T02:34:50.781+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-07-28T02:34:50.849+0000] {logging_mixin.py:190} INFO - 2026-07-28 02:34:50.848 | INFO     | scripts.***_tasks:task_extract_load_raw:22 - Airflow : Extract + Load Raw
+[2026-07-28T02:34:50.853+0000] {taskinstance.py:3310} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/project/scripts/airflow_tasks.py", line 24, in task_extract_load_raw
+    df = extract_data()
+         ^^^^^^^^^^^^^^
+  File "/opt/airflow/project/scripts/extract.py", line 28, in extract_data
+    raise FileNotFoundError(
+FileNotFoundError: Source file not found: data/FMCG_2022_2024.csv
+[2026-07-28T02:34:50.904+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=etl_pipeline, task_id=extract_load_raw, run_id=scheduled__2026-07-27T00:00:00+00:00, execution_date=20260727T000000, start_date=20260728T023450, end_date=20260728T023450
+[2026-07-28T02:34:50.935+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-07-28T02:34:50.936+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 5 for task extract_load_raw (Source file not found: data/FMCG_2022_2024.csv; 190)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3004, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3158, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3182, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/project/scripts/airflow_tasks.py", line 24, in task_extract_load_raw
+    df = extract_data()
+         ^^^^^^^^^^^^^^
+  File "/opt/airflow/project/scripts/extract.py", line 28, in extract_data
+    raise FileNotFoundError(
+FileNotFoundError: Source file not found: data/FMCG_2022_2024.csv
+[2026-07-28T02:34:50.995+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2026-07-28T02:34:51.046+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-07-28T02:34:51.050+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2026-07-28T03:31:10.352+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-07-28T03:31:10.386+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_pipeline.extract_load_raw scheduled__2026-07-27T00:00:00+00:00 [queued]>
+[2026-07-28T03:31:10.402+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_pipeline.extract_load_raw scheduled__2026-07-27T00:00:00+00:00 [queued]>
+[2026-07-28T03:31:10.403+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2026-07-28T03:31:10.431+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): extract_load_raw> on 2026-07-27 00:00:00+00:00
+[2026-07-28T03:31:10.451+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'etl_pipeline', 'extract_load_raw', 'scheduled__2026-07-27T00:00:00+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/etl_pipeline_dag.py', '--cfg-path', '/tmp/tmpjdsq6559']
+[2026-07-28T03:31:10.458+0000] {standard_task_runner.py:105} INFO - Job 3: Subtask extract_load_raw
+[2026-07-28T03:31:10.458+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=176) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-07-28T03:31:10.460+0000] {standard_task_runner.py:72} INFO - Started process 178 to run task
+[2026-07-28T03:31:10.604+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_pipeline.extract_load_raw scheduled__2026-07-27T00:00:00+00:00 [running]> on host 1a8d21ac42c7
+[2026-07-28T03:31:10.781+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ForecastLab' AIRFLOW_CTX_DAG_ID='etl_pipeline' AIRFLOW_CTX_TASK_ID='extract_load_raw' AIRFLOW_CTX_EXECUTION_DATE='2026-07-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-07-27T00:00:00+00:00'
+[2026-07-28T03:31:10.785+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-07-28T03:31:10.833+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:31:10.832 | INFO     | scripts.***_tasks:task_extract_load_raw:22 - Airflow : Extract + Load Raw
+[2026-07-28T03:31:10.836+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:31:10.835 | INFO     | scripts.extract:extract_data:32 - Reading dataset: /opt/***/project/data/FMCG_2022_2024.csv
+[2026-07-28T03:31:11.329+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:31:11.329 | SUCCESS  | scripts.extract:extract_data:41 - 190757 rows extracted.
+[2026-07-28T03:31:11.332+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:31:11.331 | INFO     | scripts.load:load_dataframe:27 - Loading dataframe to raw.sales
+[2026-07-28T03:32:38.859+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:32:38.859 | SUCCESS  | scripts.load:load_dataframe:41 - 190757 rows loaded into raw.sales
+[2026-07-28T03:32:38.866+0000] {python.py:240} INFO - Done. Returned value was: None
+[2026-07-28T03:32:38.887+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-07-28T03:32:38.888+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_pipeline, task_id=extract_load_raw, run_id=scheduled__2026-07-27T00:00:00+00:00, execution_date=20260727T000000, start_date=20260728T033110, end_date=20260728T033238
+[2026-07-28T03:32:38.969+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-07-28T03:32:39.017+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-07-28T03:32:39.021+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

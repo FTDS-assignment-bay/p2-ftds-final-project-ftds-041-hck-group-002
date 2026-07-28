@@ -210,3 +210,174 @@
 2026-07-27 17:00:31.895 | SUCCESS  | scripts.etl_pipeline:run_pipeline:97 - ============================================================
 2026-07-27 17:00:31.897 | SUCCESS  | scripts.etl_pipeline:run_pipeline:98 - ETL PIPELINE FINISHED
 2026-07-27 17:00:31.897 | SUCCESS  | scripts.etl_pipeline:run_pipeline:99 - ============================================================
+2026-07-28 09:06:36.269 | INFO     | scripts.load:read_dataframe:68 - Reading data from raw.sales
+2026-07-28 09:06:40.278 | SUCCESS  | scripts.load:read_dataframe:76 - 190757 rows read from raw.sales
+2026-07-28 02:34:50.848 | INFO     | scripts.airflow_tasks:task_extract_load_raw:22 - Airflow : Extract + Load Raw
+2026-07-28 02:35:04.870 | INFO     | scripts.airflow_tasks:task_extract_load_raw:22 - Airflow : Extract + Load Raw
+2026-07-28 02:39:53.742 | INFO     | scripts.airflow_tasks:task_extract_load_raw:22 - Airflow : Extract + Load Raw
+2026-07-28 02:40:06.736 | INFO     | scripts.airflow_tasks:task_extract_load_raw:22 - Airflow : Extract + Load Raw
+2026-07-28 02:48:23.958 | INFO     | scripts.extract:extract_data:32 - Reading dataset: /opt/airflow/project/data/FMCG_2022_2024.csv
+2026-07-28 02:48:24.500 | SUCCESS  | scripts.extract:extract_data:41 - 190757 rows extracted.
+2026-07-28 02:53:19.093 | INFO     | scripts.airflow_tasks:task_extract_load_raw:22 - Airflow : Extract + Load Raw
+2026-07-28 02:53:19.094 | INFO     | scripts.extract:extract_data:32 - Reading dataset: /opt/airflow/project/data/FMCG_2022_2024.csv
+2026-07-28 02:53:19.627 | SUCCESS  | scripts.extract:extract_data:41 - 190757 rows extracted.
+2026-07-28 02:53:19.628 | INFO     | scripts.load:load_dataframe:27 - Loading dataframe to raw.sales
+2026-07-28 02:55:47.566 | INFO     | scripts.airflow_tasks:task_extract_load_raw:22 - Airflow : Extract + Load Raw
+2026-07-28 02:55:47.567 | INFO     | scripts.extract:extract_data:32 - Reading dataset: /opt/airflow/project/data/FMCG_2022_2024.csv
+2026-07-28 02:55:48.104 | SUCCESS  | scripts.extract:extract_data:41 - 190757 rows extracted.
+2026-07-28 02:55:48.105 | INFO     | scripts.load:load_dataframe:27 - Loading dataframe to raw.sales
+2026-07-28 02:56:46.795 | INFO     | scripts.airflow_tasks:task_extract_load_raw:22 - Airflow : Extract + Load Raw
+2026-07-28 02:56:46.796 | INFO     | scripts.extract:extract_data:32 - Reading dataset: /opt/airflow/project/data/FMCG_2022_2024.csv
+2026-07-28 02:56:47.267 | SUCCESS  | scripts.extract:extract_data:41 - 190757 rows extracted.
+2026-07-28 02:56:47.268 | INFO     | scripts.load:load_dataframe:27 - Loading dataframe to raw.sales
+2026-07-28 03:03:17.099 | INFO     | scripts.airflow_tasks:task_extract_load_raw:22 - Airflow : Extract + Load Raw
+2026-07-28 03:03:17.101 | INFO     | scripts.extract:extract_data:32 - Reading dataset: /opt/airflow/project/data/FMCG_2022_2024.csv
+2026-07-28 03:03:17.847 | SUCCESS  | scripts.extract:extract_data:41 - 190757 rows extracted.
+2026-07-28 03:03:17.849 | INFO     | scripts.load:load_dataframe:27 - Loading dataframe to raw.sales
+2026-07-28 03:04:45.597 | SUCCESS  | scripts.load:load_dataframe:41 - 190757 rows loaded into raw.sales
+2026-07-28 03:05:18.006 | INFO     | scripts.airflow_tasks:task_validate:39 - Airflow : Validate
+2026-07-28 03:05:18.007 | INFO     | scripts.load:read_dataframe:68 - Reading data from raw.sales
+2026-07-28 03:05:22.521 | SUCCESS  | scripts.load:read_dataframe:76 - 190757 rows read from raw.sales
+2026-07-28 03:05:22.522 | INFO     | scripts.validate:validate_data:29 - Starting data validation...
+2026-07-28 03:05:22.671 | INFO     | scripts.validate:validate_data:37 - No missing values found.
+2026-07-28 03:05:22.985 | INFO     | scripts.validate:validate_data:45 - No duplicate rows found.
+2026-07-28 03:05:22.987 | INFO     | scripts.validate:validate_data:53 - Promotion flag is valid.
+2026-07-28 03:05:22.992 | WARNING  | scripts.validate:validate_data:73 - stock_available contains 3 negative values.
+2026-07-28 03:05:22.993 | WARNING  | scripts.validate:validate_data:73 - delivered_qty contains 3 negative values.
+2026-07-28 03:05:22.994 | WARNING  | scripts.validate:validate_data:73 - units_sold contains 3 negative values.
+2026-07-28 03:05:22.995 | INFO     | scripts.validate:validate_data:75 - delivery_days validation passed.
+2026-07-28 03:05:22.996 | SUCCESS  | scripts.validate:validate_data:87 - Validation completed.
+2026-07-28 03:05:35.897 | INFO     | scripts.airflow_tasks:task_analytics_pipeline:54 - Airflow : Analytics Pipeline
+2026-07-28 03:05:35.897 | INFO     | scripts.load:read_dataframe:68 - Reading data from raw.sales
+2026-07-28 03:05:40.120 | SUCCESS  | scripts.load:read_dataframe:76 - 190757 rows read from raw.sales
+2026-07-28 03:05:40.121 | INFO     | scripts.clean:clean_data:25 - Starting data cleaning...
+2026-07-28 03:05:40.204 | INFO     | scripts.clean:clean_data:32 - Date converted to datetime.
+2026-07-28 03:05:40.903 | INFO     | scripts.clean:clean_data:42 - String columns cleaned.
+2026-07-28 03:05:40.909 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'stock_available'.
+2026-07-28 03:05:40.915 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'delivered_qty'.
+2026-07-28 03:05:40.920 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'units_sold'.
+2026-07-28 03:05:40.921 | SUCCESS  | scripts.clean:clean_data:66 - Data cleaning completed.
+2026-07-28 03:05:40.922 | INFO     | scripts.transform:transform_data:25 - Starting feature engineering...
+2026-07-28 03:05:41.127 | SUCCESS  | scripts.transform:transform_data:65 - Feature engineering completed.
+2026-07-28 03:05:41.128 | INFO     | scripts.load:load_dataframe:27 - Loading dataframe to analytics.sales
+2026-07-28 03:07:57.409 | SUCCESS  | scripts.load:load_dataframe:41 - 190757 rows loaded into analytics.sales
+2026-07-28 03:07:57.411 | INFO     | scripts.export:export_dataset:25 - Exporting analytics dataset...
+2026-07-28 03:08:09.211 | SUCCESS  | scripts.export:export_dataset:41 - 190757 rows exported.
+2026-07-28 03:08:09.212 | SUCCESS  | scripts.export:export_dataset:43 - Dataset saved to output/forecasting_dataset.csv
+2026-07-28 03:13:42.257 | INFO     | scripts.airflow_tasks:task_extract_load_raw:22 - Airflow : Extract + Load Raw
+2026-07-28 03:13:42.260 | INFO     | scripts.extract:extract_data:32 - Reading dataset: /opt/airflow/project/data/FMCG_2022_2024.csv
+2026-07-28 03:13:42.995 | SUCCESS  | scripts.extract:extract_data:41 - 190757 rows extracted.
+2026-07-28 03:13:42.997 | INFO     | scripts.load:load_dataframe:27 - Loading dataframe to raw.sales
+2026-07-28 03:13:52.007 | INFO     | scripts.airflow_tasks:task_extract_load_raw:22 - Airflow : Extract + Load Raw
+2026-07-28 03:13:52.013 | INFO     | scripts.extract:extract_data:32 - Reading dataset: /opt/airflow/project/data/FMCG_2022_2024.csv
+2026-07-28 03:13:52.888 | SUCCESS  | scripts.extract:extract_data:41 - 190757 rows extracted.
+2026-07-28 03:13:52.890 | INFO     | scripts.load:load_dataframe:27 - Loading dataframe to raw.sales
+2026-07-28 03:15:01.285 | SUCCESS  | scripts.load:load_dataframe:41 - 190757 rows loaded into raw.sales
+2026-07-28 03:15:04.045 | INFO     | scripts.airflow_tasks:task_validate:39 - Airflow : Validate
+2026-07-28 03:15:04.048 | INFO     | scripts.load:read_dataframe:68 - Reading data from raw.sales
+2026-07-28 03:16:15.535 | SUCCESS  | scripts.load:load_dataframe:41 - 190757 rows loaded into raw.sales
+2026-07-28 03:16:20.509 | INFO     | scripts.airflow_tasks:task_validate:39 - Airflow : Validate
+2026-07-28 03:16:20.512 | INFO     | scripts.load:read_dataframe:68 - Reading data from raw.sales
+2026-07-28 03:16:23.882 | SUCCESS  | scripts.load:read_dataframe:76 - 190757 rows read from raw.sales
+2026-07-28 03:16:23.887 | INFO     | scripts.validate:validate_data:29 - Starting data validation...
+2026-07-28 03:16:24.246 | INFO     | scripts.validate:validate_data:37 - No missing values found.
+2026-07-28 03:16:25.060 | INFO     | scripts.validate:validate_data:45 - No duplicate rows found.
+2026-07-28 03:16:25.075 | INFO     | scripts.validate:validate_data:53 - Promotion flag is valid.
+2026-07-28 03:16:25.095 | WARNING  | scripts.validate:validate_data:73 - stock_available contains 3 negative values.
+2026-07-28 03:16:25.101 | WARNING  | scripts.validate:validate_data:73 - delivered_qty contains 3 negative values.
+2026-07-28 03:16:25.107 | WARNING  | scripts.validate:validate_data:73 - units_sold contains 3 negative values.
+2026-07-28 03:16:25.110 | INFO     | scripts.validate:validate_data:75 - delivery_days validation passed.
+2026-07-28 03:16:25.114 | SUCCESS  | scripts.validate:validate_data:87 - Validation completed.
+2026-07-28 03:16:27.192 | SUCCESS  | scripts.load:read_dataframe:76 - 190757 rows read from raw.sales
+2026-07-28 03:16:27.194 | INFO     | scripts.validate:validate_data:29 - Starting data validation...
+2026-07-28 03:16:27.379 | INFO     | scripts.validate:validate_data:37 - No missing values found.
+2026-07-28 03:16:27.758 | INFO     | scripts.validate:validate_data:45 - No duplicate rows found.
+2026-07-28 03:16:27.762 | INFO     | scripts.validate:validate_data:53 - Promotion flag is valid.
+2026-07-28 03:16:27.767 | WARNING  | scripts.validate:validate_data:73 - stock_available contains 3 negative values.
+2026-07-28 03:16:27.769 | WARNING  | scripts.validate:validate_data:73 - delivered_qty contains 3 negative values.
+2026-07-28 03:16:27.771 | WARNING  | scripts.validate:validate_data:73 - units_sold contains 3 negative values.
+2026-07-28 03:16:27.773 | INFO     | scripts.validate:validate_data:75 - delivery_days validation passed.
+2026-07-28 03:16:27.775 | SUCCESS  | scripts.validate:validate_data:87 - Validation completed.
+2026-07-28 03:16:28.347 | INFO     | scripts.airflow_tasks:task_analytics_pipeline:54 - Airflow : Analytics Pipeline
+2026-07-28 03:16:28.356 | INFO     | scripts.load:read_dataframe:68 - Reading data from raw.sales
+2026-07-28 03:16:33.710 | INFO     | scripts.airflow_tasks:task_analytics_pipeline:54 - Airflow : Analytics Pipeline
+2026-07-28 03:16:33.714 | INFO     | scripts.load:read_dataframe:68 - Reading data from raw.sales
+2026-07-28 03:16:38.863 | SUCCESS  | scripts.load:read_dataframe:76 - 190757 rows read from raw.sales
+2026-07-28 03:16:38.868 | INFO     | scripts.clean:clean_data:25 - Starting data cleaning...
+2026-07-28 03:16:39.064 | INFO     | scripts.clean:clean_data:32 - Date converted to datetime.
+2026-07-28 03:16:39.838 | INFO     | scripts.clean:clean_data:42 - String columns cleaned.
+2026-07-28 03:16:39.845 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'stock_available'.
+2026-07-28 03:16:39.849 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'delivered_qty'.
+2026-07-28 03:16:39.853 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'units_sold'.
+2026-07-28 03:16:39.855 | SUCCESS  | scripts.clean:clean_data:66 - Data cleaning completed.
+2026-07-28 03:16:39.856 | INFO     | scripts.transform:transform_data:25 - Starting feature engineering...
+2026-07-28 03:16:39.988 | SUCCESS  | scripts.transform:transform_data:65 - Feature engineering completed.
+2026-07-28 03:16:39.990 | INFO     | scripts.load:load_dataframe:27 - Loading dataframe to analytics.sales
+2026-07-28 03:16:41.449 | SUCCESS  | scripts.load:read_dataframe:76 - 190757 rows read from raw.sales
+2026-07-28 03:16:41.452 | INFO     | scripts.clean:clean_data:25 - Starting data cleaning...
+2026-07-28 03:16:41.570 | INFO     | scripts.clean:clean_data:32 - Date converted to datetime.
+2026-07-28 03:16:42.313 | INFO     | scripts.clean:clean_data:42 - String columns cleaned.
+2026-07-28 03:16:42.320 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'stock_available'.
+2026-07-28 03:16:42.325 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'delivered_qty'.
+2026-07-28 03:16:42.329 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'units_sold'.
+2026-07-28 03:16:42.332 | SUCCESS  | scripts.clean:clean_data:66 - Data cleaning completed.
+2026-07-28 03:16:42.335 | INFO     | scripts.transform:transform_data:25 - Starting feature engineering...
+2026-07-28 03:16:42.479 | SUCCESS  | scripts.transform:transform_data:65 - Feature engineering completed.
+2026-07-28 03:16:42.481 | INFO     | scripts.load:load_dataframe:27 - Loading dataframe to analytics.sales
+2026-07-28 03:18:38.770 | SUCCESS  | scripts.load:load_dataframe:41 - 190757 rows loaded into analytics.sales
+2026-07-28 03:18:38.772 | INFO     | scripts.export:export_dataset:25 - Exporting analytics dataset...
+2026-07-28 03:20:51.633 | SUCCESS  | scripts.load:load_dataframe:41 - 190757 rows loaded into analytics.sales
+2026-07-28 03:20:51.636 | INFO     | scripts.export:export_dataset:25 - Exporting analytics dataset...
+2026-07-28 03:21:04.448 | SUCCESS  | scripts.export:export_dataset:41 - 190757 rows exported.
+2026-07-28 03:21:04.453 | SUCCESS  | scripts.export:export_dataset:43 - Dataset saved to output/forecasting_dataset.csv
+2026-07-28 03:22:27.060 | INFO     | scripts.airflow_tasks:task_analytics_pipeline:54 - Airflow : Analytics Pipeline
+2026-07-28 03:22:27.063 | INFO     | scripts.load:read_dataframe:68 - Reading data from raw.sales
+2026-07-28 03:22:33.459 | SUCCESS  | scripts.load:read_dataframe:76 - 190757 rows read from raw.sales
+2026-07-28 03:22:33.462 | INFO     | scripts.clean:clean_data:25 - Starting data cleaning...
+2026-07-28 03:22:33.555 | INFO     | scripts.clean:clean_data:32 - Date converted to datetime.
+2026-07-28 03:22:34.311 | INFO     | scripts.clean:clean_data:42 - String columns cleaned.
+2026-07-28 03:22:34.319 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'stock_available'.
+2026-07-28 03:22:34.322 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'delivered_qty'.
+2026-07-28 03:22:34.326 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'units_sold'.
+2026-07-28 03:22:34.328 | SUCCESS  | scripts.clean:clean_data:66 - Data cleaning completed.
+2026-07-28 03:22:34.329 | INFO     | scripts.transform:transform_data:25 - Starting feature engineering...
+2026-07-28 03:22:34.469 | SUCCESS  | scripts.transform:transform_data:65 - Feature engineering completed.
+2026-07-28 03:22:34.472 | INFO     | scripts.load:load_dataframe:27 - Loading dataframe to analytics.sales
+2026-07-28 03:22:36.497 | INFO     | scripts.airflow_tasks:task_extract_load_raw:22 - Airflow : Extract + Load Raw
+2026-07-28 03:22:36.501 | INFO     | scripts.extract:extract_data:32 - Reading dataset: /opt/airflow/project/data/FMCG_2022_2024.csv
+2026-07-28 03:22:37.222 | SUCCESS  | scripts.extract:extract_data:41 - 190757 rows extracted.
+2026-07-28 03:22:37.224 | INFO     | scripts.load:load_dataframe:27 - Loading dataframe to raw.sales
+2026-07-28 03:31:10.832 | INFO     | scripts.airflow_tasks:task_extract_load_raw:22 - Airflow : Extract + Load Raw
+2026-07-28 03:31:10.835 | INFO     | scripts.extract:extract_data:32 - Reading dataset: /opt/airflow/project/data/FMCG_2022_2024.csv
+2026-07-28 03:31:11.329 | SUCCESS  | scripts.extract:extract_data:41 - 190757 rows extracted.
+2026-07-28 03:31:11.331 | INFO     | scripts.load:load_dataframe:27 - Loading dataframe to raw.sales
+2026-07-28 03:32:38.859 | SUCCESS  | scripts.load:load_dataframe:41 - 190757 rows loaded into raw.sales
+2026-07-28 03:32:40.901 | INFO     | scripts.airflow_tasks:task_validate:39 - Airflow : Validate
+2026-07-28 03:32:40.904 | INFO     | scripts.load:read_dataframe:68 - Reading data from raw.sales
+2026-07-28 03:32:46.296 | SUCCESS  | scripts.load:read_dataframe:76 - 190757 rows read from raw.sales
+2026-07-28 03:32:46.299 | INFO     | scripts.validate:validate_data:29 - Starting data validation...
+2026-07-28 03:32:46.443 | INFO     | scripts.validate:validate_data:37 - No missing values found.
+2026-07-28 03:32:46.753 | INFO     | scripts.validate:validate_data:45 - No duplicate rows found.
+2026-07-28 03:32:46.757 | INFO     | scripts.validate:validate_data:53 - Promotion flag is valid.
+2026-07-28 03:32:46.762 | WARNING  | scripts.validate:validate_data:73 - stock_available contains 3 negative values.
+2026-07-28 03:32:46.765 | WARNING  | scripts.validate:validate_data:73 - delivered_qty contains 3 negative values.
+2026-07-28 03:32:46.767 | WARNING  | scripts.validate:validate_data:73 - units_sold contains 3 negative values.
+2026-07-28 03:32:46.769 | INFO     | scripts.validate:validate_data:75 - delivery_days validation passed.
+2026-07-28 03:32:46.771 | SUCCESS  | scripts.validate:validate_data:87 - Validation completed.
+2026-07-28 03:32:49.348 | INFO     | scripts.airflow_tasks:task_analytics_pipeline:54 - Airflow : Analytics Pipeline
+2026-07-28 03:32:49.351 | INFO     | scripts.load:read_dataframe:68 - Reading data from raw.sales
+2026-07-28 03:32:55.116 | SUCCESS  | scripts.load:read_dataframe:76 - 190757 rows read from raw.sales
+2026-07-28 03:32:55.118 | INFO     | scripts.clean:clean_data:25 - Starting data cleaning...
+2026-07-28 03:32:55.199 | INFO     | scripts.clean:clean_data:32 - Date converted to datetime.
+2026-07-28 03:32:55.782 | INFO     | scripts.clean:clean_data:42 - String columns cleaned.
+2026-07-28 03:32:55.787 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'stock_available'.
+2026-07-28 03:32:55.792 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'delivered_qty'.
+2026-07-28 03:32:55.796 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'units_sold'.
+2026-07-28 03:32:55.798 | SUCCESS  | scripts.clean:clean_data:66 - Data cleaning completed.
+2026-07-28 03:32:55.800 | INFO     | scripts.transform:transform_data:25 - Starting feature engineering...
+2026-07-28 03:32:55.909 | SUCCESS  | scripts.transform:transform_data:65 - Feature engineering completed.
+2026-07-28 03:32:55.911 | INFO     | scripts.load:load_dataframe:27 - Loading dataframe to analytics.sales
+2026-07-28 03:35:06.392 | SUCCESS  | scripts.load:load_dataframe:41 - 190757 rows loaded into analytics.sales
+2026-07-28 03:35:06.394 | INFO     | scripts.export:export_dataset:25 - Exporting analytics dataset...
+2026-07-28 03:35:17.079 | SUCCESS  | scripts.export:export_dataset:41 - 190757 rows exported.
+2026-07-28 03:35:17.081 | SUCCESS  | scripts.export:export_dataset:43 - Dataset saved to output/forecasting_dataset.csv

@@ -1,8 +1,11 @@
 """
 Load module.
 
-Responsible for loading a Pandas DataFrame into PostgreSQL.
+Responsible for loading and reading Pandas DataFrame
+from PostgreSQL.
 """
+
+import pandas as pd
 
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -19,19 +22,6 @@ def load_dataframe(
 ) -> None:
     """
     Load DataFrame into PostgreSQL.
-
-    Parameters
-    ----------
-    dataframe : pd.DataFrame
-        DataFrame to load.
-    schema : str
-        Target schema.
-    table : str
-        Target table.
-    if_exists : str
-        append / replace / fail
-    chunksize : int
-        Number of rows per batch.
     """
 
     logger.info(f"Loading dataframe to {schema}.{table}")
@@ -53,6 +43,43 @@ def load_dataframe(
         )
 
     except SQLAlchemyError as e:
+
+        logger.exception(e)
+
+        raise
+
+
+def read_dataframe(schema: str, table: str) -> pd.DataFrame:
+    """
+    Read PostgreSQL table into Pandas DataFrame.
+
+    Parameters
+    ----------
+    schema : str
+        Database schema.
+    table : str
+        Table name.
+
+    Returns
+    -------
+    pd.DataFrame
+    """
+
+    logger.info(f"Reading data from {schema}.{table}")
+
+    query = f"SELECT * FROM {schema}.{table}"
+
+    try:
+
+        dataframe = pd.read_sql(query, engine)
+
+        logger.success(
+            f"{len(dataframe)} rows read from {schema}.{table}"
+        )
+
+        return dataframe
+
+    except Exception as e:
 
         logger.exception(e)
 
