@@ -3,9 +3,6 @@ FMCG Forecasting App — Streamlit deployment utk 3 model final:
 1. Demand Forecasting (order-level)
 2. Revenue Forecasting (order-level)
 3. Weekly Aggregate Demand Forecasting (per kategori)
-
-Cara jalankan lokal : streamlit run app.py
-Cara deploy         : lihat README.md
 """
 
 # ==== IMPORT LIBRARY ====
@@ -41,7 +38,14 @@ def load_models():
     return m1, m2, m3
 
 
+@st.cache_data
+def load_eda_metadata():
+    with open('eda_metadata.json') as f:                              # hasil ekstraksi notebook Data Analyst (EDA & business insight)
+        return json.load(f)
+
+
 META = load_metadata()                                                # metadata: kategori, default historis, kolom fitur, metrik
+EDA = load_eda_metadata()                                             # metadata EDA: chart, insight, tabel restock, simulasi dampak bisnis
 MODEL1, MODEL2, MODEL3 = load_models()                                # 3 model terlatih siap dipakai prediksi
 
 
@@ -92,7 +96,14 @@ st.sidebar.title('📦 FMCG Forecasting')                                # judul
 st.sidebar.caption('Final Project — Data Science Bootcamp')             # sub-judul kecil
 page = st.sidebar.radio(                                                # menu navigasi radio button
     'Pilih halaman:',
-    ['🏠 Overview', '📦 Model 1 — Demand', '💰 Model 2 — Revenue', '📈 Model 3 — Weekly Aggregate'],
+    [
+        '🏠 Overview',
+        '⚙️ Data Engineer — ETL Pipeline',
+        '📊 Data Analyst — EDA & Insights',
+        '📦 Model 1 — Demand',
+        '💰 Model 2 — Revenue',
+        '📈 Model 3 — Weekly Aggregate',
+    ],
 )
 st.sidebar.divider()                                                     # garis pemisah
 st.sidebar.markdown(
@@ -144,6 +155,370 @@ if page == '🏠 Overview':
     )
 
 # =========================================================================
+# HALAMAN: DATA ENGINEER — ETL PIPELINE
+# =========================================================================
+elif page == '⚙️ Data Engineer — ETL Pipeline':
+
+    st.title("⚙️ Data Engineer — ETL Pipeline")
+
+    st.caption(
+        "Menampilkan alur Extract, Transform, dan Load (ETL) yang digunakan "
+        "untuk mempersiapkan data sebelum dilakukan analisis dan forecasting."
+    )
+
+    # ==========================================================
+    # SECTION 1
+    # ==========================================================
+    st.header("📌 Project Overview")
+
+    st.markdown("""
+    Dataset berasal dari **Kaggle** berupa transaksi penjualan FMCG periode **2022–2024**.
+
+    **Dataset**
+
+    - 190.757 baris
+    - 21 kolom
+
+    Tujuan ETL adalah:
+
+    - memastikan kualitas data
+    - membersihkan data
+    - melakukan transformasi
+    - menghasilkan dataset siap analisis
+    - menyediakan data yang konsisten untuk Data Analyst dan Data Scientist
+    """)
+
+    st.info(
+        "ETL memastikan seluruh proses analisis dan machine learning "
+        "menggunakan dataset yang sudah tervalidasi."
+    )
+
+    # ==========================================================
+    # SECTION 2
+    # ==========================================================
+    st.header("🔄 Visual ETL Workflow")
+
+    st.graphviz_chart("""
+    digraph ETL {
+
+    rankdir=TB;
+
+    node [shape=box, style="rounded,filled", color="#1f77b4", fillcolor="#EAF4FF"];
+
+    raw[label="📄 Raw Dataset"];
+    extract[label="📥 Extract\\n(Read CSV)"];
+    validation[label="✅ Data Validation\\nMissing Value\\nDuplicate\\nData Type"];
+    cleaning[label="🛠 Data Cleaning\\nCleaning & Consistency"];
+    feature[label="⚙ Feature Engineering\\nYear\\nMonth\\nQuarter\\nWeek of Year\\nDay of Week\\nWeekend Flag\\nRevenue"];
+    load[label="📦 Load\\nClean Dataset"];
+    eda[label="📊 Data Analyst"];
+    model[label="🤖 Forecasting Model"];
+
+    raw->extract;
+    extract->validation;
+    validation->cleaning;
+    cleaning->feature;
+    feature->load;
+    load->eda;
+    eda->model;
+
+    }
+    """)
+
+    # ==========================================================
+    # SECTION 3
+    # ==========================================================
+    st.header("📝 ETL Breakdown")
+
+    with st.expander("📥 Extract"):
+
+        st.markdown("""
+    Tahapan Extract bertujuan membaca dataset mentah sebelum dilakukan proses validasi.
+
+    Proses yang dilakukan:
+
+    - Membaca dataset CSV
+    - Import menggunakan pandas
+    - Validasi ukuran dataset
+    - Validasi nama kolom
+    """)
+
+        st.code(
+    """import pandas as pd
+
+    df = pd.read_csv("forecasting_data_engineer.csv")
+
+    print(df.shape)
+    print(df.columns)
+    """,
+    language="python"
+    )
+
+    with st.expander("🛠 Transform"):
+
+        st.markdown("""
+    Tahapan Transform memastikan dataset siap digunakan.
+
+    ### ✔ Missing Value Checking
+
+    Memastikan tidak terdapat nilai kosong pada setiap kolom.
+
+    ### ✔ Duplicate Checking
+
+    Menghapus data duplikat agar tidak memengaruhi analisis.
+
+    ### ✔ Data Type Conversion
+
+    Mengubah tipe data menjadi format yang sesuai.
+
+    ### ✔ Data Consistency
+
+    Memastikan nilai antar kolom konsisten.
+
+    ### ✔ Feature Engineering
+
+    Feature yang dihasilkan pada proses transformasi:
+
+    - year
+    - month
+    - quarter
+    - week_of_year
+    - day_of_week
+    - weekend_flag
+    - revenue
+    """)
+
+    with st.expander("📦 Load"):
+
+        st.markdown("""
+    Dataset hasil transformasi disimpan sebagai **clean dataset**.
+
+    Dataset ini kemudian digunakan oleh:
+
+    - ✔ Data Analyst
+    - ✔ Data Scientist
+
+    Dengan demikian seluruh tim menggunakan dataset yang sama sehingga analisis menjadi konsisten.
+    """)
+
+    # ==========================================================
+    # SECTION 4
+    # ==========================================================
+    st.header("📊 Data Quality Summary")
+
+    c1, c2, c3, c4 = st.columns(4)
+
+    c1.metric("Missing Value", "0")
+    c2.metric("Duplicate", "0")
+    c3.metric("Rows", "190,757")
+    c4.metric("Columns", "21")
+
+    st.success(
+        "Dataset telah lolos validasi kualitas data sehingga siap digunakan "
+        "pada proses analisis dan machine learning."
+    )
+
+    # ==========================================================
+    # SECTION 5
+    # ==========================================================
+    st.header("⚙ Feature Engineering")
+
+    feature_df = pd.DataFrame({
+
+        "Feature":[
+            "year",
+            "month",
+            "quarter",
+            "week_of_year",
+            "day_of_week",
+            "weekend_flag",
+            "revenue"
+        ],
+
+        "Description":[
+            "tahun transaksi",
+            "bulan transaksi",
+            "kuartal transaksi",
+            "minggu ke dalam tahun",
+            "hari dalam minggu",
+            "indikator akhir pekan",
+            "price_unit × units_sold"
+        ]
+    })
+
+    st.dataframe(feature_df, use_container_width=True)
+
+    st.info(
+        "Feature-feature hasil transformasi digunakan untuk proses analisis data, visualisasi, serta menjadi dasar dalam pembangunan model forecasting."
+    )
+
+    # ==========================================================
+    # SECTION 6
+    # ==========================================================
+    st.header("📦 Pipeline Output")
+
+    st.markdown("""
+
+    """)
+
+    # ==========================================================
+    # SECTION 7
+    # ==========================================================
+    st.header("🧰 Technology Stack")
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
+        st.success("🐼 Pandas")
+        st.success("🔢 NumPy")
+
+    with col2:
+        st.success("🐍 Python")
+        st.success("📈 Scikit-learn")
+
+    with col3:
+        st.warning("🗄 PostgreSQL\n\nPipeline Architecture")
+        st.warning("🌬 Apache Airflow\n\nPipeline Architecture")
+
+    with col4:
+        st.success("🖥 Streamlit")
+        st.success("💾 Joblib")
+
+    # ==========================================================
+    # SECTION 8
+    # ==========================================================
+    st.header("👨‍💻 Contribution")
+
+    st.info("""
+    ### 👨‍💻 Data Engineer Responsibilities
+
+    ✔ Data Extraction
+
+    ✔ Data Validation
+
+    ✔ Data Cleaning
+
+    ✔ Feature Engineering
+
+    ✔ ETL Pipeline Design
+
+    ✔ Data Preparation
+
+    ✔ Dataset Delivery for Analytics and Machine Learning
+    """)
+
+    # ==========================================================
+    # SECTION 9
+    # ==========================================================
+    st.header("🚀 Future Improvement")
+
+    st.markdown("""
+    Pada implementasi production, pipeline ini dapat dikembangkan menjadi pipeline otomatis menggunakan:
+
+    - Apache Airflow
+    - PostgreSQL
+    - Docker
+    - Cron Scheduling
+    - Data Validation Monitoring
+    """)
+
+# =========================================================================
+# HALAMAN: DATA ANALYST — EDA & BUSINESS INSIGHTS
+# Konten halaman ini diekstrak dari notebook Data Analyst
+# (FMCG_Supply_Chain_Predictor_Analysis_v2.ipynb) — 6 visualisasi EDA inti,
+# restock priority matrix, dan simulasi dampak bisnis. Karena raw dataset
+# (forecasting_data_engineer.csv) tidak ikut di-deploy, chart ditampilkan
+# sbg gambar statis hasil render notebook (bukan re-compute saat runtime),
+# sedangkan angka & tabel diambil dari eda_metadata.json.
+# =========================================================================
+elif page == '📊 Data Analyst — EDA & Insights':
+    st.title('📊 Data Analyst — Exploratory Data Analysis & Business Insights')
+    st.caption(
+        'Baseline analitik sebelum model dibangun — kuantifikasi pain point overstock & stockout, '
+        'serta rekomendasi restock berbasis data historis 2022-2024.'
+    )
+
+    bu = EDA['business_understanding']
+    with st.expander('🎯 Business Understanding', expanded=False):
+        st.markdown(f"**Ringkasan proyek:** {bu['project_summary']}")
+        st.markdown('**Pain points utama:**')
+        for p in bu['pain_points']:
+            st.markdown(f'- {p}')
+        st.markdown(f"**Business objective:** {bu['objective']}")
+
+    st.divider()
+    st.subheader('Ringkasan Angka Kunci')
+    km = EDA['key_metrics']
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric('Total Revenue', f"$ {km['total_revenue']:,.0f}")
+    c2.metric('Total Unit Terjual', f"{km['total_units_sold']:,.0f} unit")
+    c3.metric('Tingkat Stockout', f"{km['stockout_rate_pct']:.2f}%")
+    c4.metric('Data Quality', 'Bersih ✅', f"{km['missing_values']} missing, {km['duplicate_rows']} duplikat")
+    st.caption(
+        f"Dataset: {EDA['dataset_info']['ukuran']} · Periode {EDA['dataset_info']['periode']} · "
+        f"Sumber: {EDA['dataset_info']['sumber']}"
+    )
+
+    st.divider()
+    st.subheader('6 Visualisasi Inti')
+    for viz in EDA['visualizations']:                                  # loop tiap visualisasi: gambar + insight
+        st.markdown(f"### {viz['title']}")
+        img_col, text_col = st.columns([1.4, 1])
+        with img_col:
+            st.image(f"assets/eda/{viz['file']}", width='stretch')
+        with text_col:
+            st.markdown(f"**Apa yang ditampilkan:** {viz['apa_yang_ditampilkan']}")
+            st.markdown(f"**Cara membaca:** {viz['cara_membaca']}")
+            st.info(f"**Insight utama:** {viz['insight']}")
+            st.success(f"**Implikasi bisnis:** {viz['implikasi']}")
+        st.divider()
+
+    st.subheader('📋 Top 15 Prioritas Restock (SKU x Channel x Region)')
+    rp = EDA['restock_priority']
+    rc1, rc2, rc3, rc4 = st.columns(4)
+    rc1.metric('Total Kombinasi Dianalisis', rp['total_combinations_analyzed'])
+    rc2.metric('🔴 Critical', rp['risk_distribution']['Critical'])
+    rc3.metric('🟠 High', rp['risk_distribution']['High'])
+    rc4.metric('🟡 Medium / 🟢 Safe', f"{rp['risk_distribution']['Medium']} / {rp['risk_distribution']['Safe']}")
+    st.caption(rp['methodology'])
+    top15_df = pd.DataFrame(rp['top15_table'])
+    st.dataframe(top15_df, width='stretch', hide_index=True)
+
+    st.divider()
+    st.subheader('💡 Business Impact Simulation')
+    bis = EDA['business_impact_simulation']
+    sim1, sim2 = st.columns(2)
+    with sim1:
+        st.markdown('**Sisi Overstock (Inventory Waste)**')
+        st.metric('Baseline idle stock / hari', f"$ {bis['overstock_side']['baseline_avg_idle_value_per_day_usd']:,.0f}")
+        st.metric('Target setelah reduksi 50%', f"$ {bis['overstock_side']['target_after_50pct_reduction_usd']:,.0f}")
+        st.metric('Potensi efisiensi modal / hari', f"$ {bis['overstock_side']['potential_capital_efficiency_per_day_usd']:,.0f}")
+    with sim2:
+        st.markdown('**Sisi Stockout (Lost Revenue)**')
+        st.metric('Estimasi total revenue hilang (2022-2024)', f"$ {bis['stockout_side']['total_lost_revenue_estimate_usd']:,.0f}")
+        st.metric(
+            f"Potensi revenue dipulihkan ({bis['stockout_side']['recoverable_pct_range']})",
+            f"$ {bis['stockout_side']['recoverable_revenue_low_usd']:,.0f} - $ {bis['stockout_side']['recoverable_revenue_high_usd']:,.0f}",
+        )
+    st.caption(bis['note'])
+
+    st.divider()
+    st.subheader('🔑 Key Insights & Rekomendasi')
+    for insight in EDA['key_insights']:
+        st.markdown(f'- {insight}')
+
+    st.markdown('#### Rekomendasi per Role')
+    rec_df = pd.DataFrame(EDA['recommendations']).rename(columns={'untuk': 'Untuk', 'rekomendasi': 'Rekomendasi'})
+    st.dataframe(rec_df, width='stretch', hide_index=True)
+
+    st.markdown('#### Kesimpulan')
+    st.markdown(EDA['conclusion'])
+    st.caption(
+        'Sumber: FMCG_Supply_Chain_Predictor_Analysis_v2.ipynb — Data Analyst Notebook, '
+        'Team: Khalfani Novian Habibi, Rendy Azly, Dennis Wirawan · FTDS 2026.'
+    )
+
+# =========================================================================
 # HALAMAN: MODEL 1 — DEMAND FORECASTING
 # =========================================================================
 elif page == '📦 Model 1 — Demand':
@@ -161,10 +536,8 @@ elif page == '📦 Model 1 — Demand':
             pack_type = c2.selectbox('Pack Type', META['pack_types'], key='m1_pack')     # pilih tipe kemasan
 
             defaults = META['category_defaults'][category]                # ambil default historis sesuai kategori terpilih
-            price_unit = c1.number_input('Harga per Unit', min_value=0.5, max_value=20.0,
-                                          value=float(defaults['avg_price']), step=0.1, key='m1_price')
-            delivery_days = c2.slider('Estimasi Lead Time Pengiriman (hari)', 1, 5,
-                                       value=int(round(defaults['avg_delivery_days'])), key='m1_lt')
+            price_unit = defaults['avg_price']
+            delivery_days = int(round(defaults['avg_delivery_days']))
             promotion_flag = st.checkbox('Promosi sedang aktif?', key='m1_promo')
             order_date = st.date_input('Tanggal Order', value=date(2025, 6, 15), key='m1_date')
 
@@ -190,7 +563,7 @@ elif page == '📦 Model 1 — Demand':
             pred = MODEL1.predict(X)[0]                                    # prediksi unit terjual
             pred = max(0, pred)                                            # jaga2 tidak negatif (unit tidak mungkin < 0)
             st.success(f'### 📦 Prediksi: **{pred:,.0f} unit terjual**')
-            st.caption(f'MAE model ≈ {META["model_metrics"]["model1"]["mae"]:.1f} unit — perkiraan ini bisa meleset sekitar segitu secara rata-rata.')
+            st.caption(f'MAE model ≈ {META["model_metrics"]["model1"]["mae"]:.1f} unit — perkiraan ini dapat meleset secara rata-rata.')
 
     with right:
         st.markdown('#### Info Model')
@@ -220,8 +593,7 @@ elif page == '💰 Model 2 — Revenue':
             defaults = META['category_defaults'][category]
             price_unit = c1.number_input('Harga per Unit', min_value=0.5, max_value=20.0,
                                           value=float(defaults['avg_price']), step=0.1, key='m2_price')
-            delivery_days = c2.slider('Estimasi Lead Time Pengiriman (hari)', 1, 5,
-                                       value=int(round(defaults['avg_delivery_days'])), key='m2_lt')
+            delivery_days = int(round(defaults['avg_delivery_days']))
             promotion_flag = st.checkbox('Promosi sedang aktif?', key='m2_promo')
             order_date = st.date_input('Tanggal Order', value=date(2025, 6, 15), key='m2_date')
 
@@ -245,8 +617,8 @@ elif page == '💰 Model 2 — Revenue':
             X = build_feature_row(numeric_values, categorical_values, META['model2_columns'])
             pred = MODEL2.predict(X)[0]
             pred = max(0, pred)
-            st.success(f'### 💰 Prediksi: **Rp {pred:,.0f}** (satuan mata uang dataset)')
-            st.caption(f'MAE model ≈ {META["model_metrics"]["model2"]["mae"]:.1f} — perkiraan ini bisa meleset sekitar segitu secara rata-rata.')
+            st.success(f'### 💰 Prediksi: **$ {pred:,.0f}** ')
+            st.caption(f'MAE model ≈ {META["model_metrics"]["model2"]["mae"]:.1f} — perkiraan ini dapat meleset secara rata-rata.')
 
     with right:
         st.markdown('#### Info Model')
@@ -298,7 +670,7 @@ elif page == '📈 Model 3 — Weekly Aggregate':
             pred = MODEL3.predict(X)[0]
             pred = max(0, pred)
             st.success(f'### 📈 Prediksi: **{pred:,.0f} unit** total minggu ini utk kategori {category}')
-            st.caption(f'MAE model ≈ {META["model_metrics"]["model3"]["mae"]:.0f} unit — model paling akurat dari ketiganya.')
+            st.caption(f'MAE model ≈ {META["model_metrics"]["model3"]["mae"]:.0f} unit.')
 
     with right:
         st.markdown('#### Info Model')
@@ -306,8 +678,8 @@ elif page == '📈 Model 3 — Weekly Aggregate':
         st.metric('MAE (data test)', f"{META['model_metrics']['model3']['mae']:.0f} unit")
         st.markdown('#### Feature Importance')
         st.pyplot(feature_importance_chart(MODEL3, META['model3_columns']), width='stretch')
-        st.caption('Agregasi mingguan meredam noise antar-order — akurasi jauh lebih tinggi dari Model 1.')
+        st.caption('Agregasi mingguan meredam noise antar-order')
 
 # ==== FOOTER ====
 st.divider()
-st.caption('FMCG Forecasting App · Final Project Data Science Bootcamp · Model: Gradient Boosting Regressor')
+st.caption('FMCG Forecasting App · Final Project FTDS · Created by: Khalfani Novian Habibi, Rendy Azly, Dennis Wirawan')
