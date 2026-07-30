@@ -14,9 +14,7 @@ dan data pipeline (Data Engineer).
 
 FMCG menghadapi dua pain point yang sama-sama merugikan: **overstock** (modal tertahan, biaya
 gudang naik) dan **stockout** (kehilangan penjualan). ForecastLab dibangun untuk memprediksi
-ketersediaan inventory sehingga tim procurement bisa merestock lebih awal, dengan target:
-
-> **Menurunkan inventory waste sebesar 50%.**
+ketersediaan inventory sehingga tim procurement bisa merestock lebih awal.
 
 Ringkasan bisnis lengkap ada di [`BUSINESS_INSIGHT_SUMMARY.md`](BUSINESS_INSIGHT_SUMMARY.md).
 
