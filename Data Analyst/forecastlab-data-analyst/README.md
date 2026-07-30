@@ -1,4 +1,7 @@
 # 📦 ForecastLab — Supply Chain Predictor
+
+
+
 ### Data Analyst Report: Prediksi Risiko Stockout & Inventory Waste pada FMCG
 
 Repositori ini berisi kontribusi **Data Analyst** pada final project tim *ForecastLab* — studi kasus
