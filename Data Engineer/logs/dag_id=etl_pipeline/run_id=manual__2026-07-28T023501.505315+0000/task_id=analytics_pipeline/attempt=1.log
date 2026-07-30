@@ -1,0 +1,225 @@
+[2026-07-28T03:16:27.810+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-07-28T03:16:27.848+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_pipeline.analytics_pipeline manual__2026-07-28T02:35:01.505315+00:00 [queued]>
+[2026-07-28T03:16:27.867+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_pipeline.analytics_pipeline manual__2026-07-28T02:35:01.505315+00:00 [queued]>
+[2026-07-28T03:16:27.869+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2026-07-28T03:16:27.893+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): analytics_pipeline> on 2026-07-28 02:35:01.505315+00:00
+[2026-07-28T03:16:27.912+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'etl_pipeline', 'analytics_pipeline', 'manual__2026-07-28T02:35:01.505315+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/etl_pipeline_dag.py', '--cfg-path', '/tmp/tmpff_o3s3y']
+[2026-07-28T03:16:27.918+0000] {standard_task_runner.py:105} INFO - Job 17: Subtask analytics_pipeline
+[2026-07-28T03:16:27.918+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=264) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-07-28T03:16:27.920+0000] {standard_task_runner.py:72} INFO - Started process 266 to run task
+[2026-07-28T03:16:28.037+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_pipeline.analytics_pipeline manual__2026-07-28T02:35:01.505315+00:00 [running]> on host 0108fe196489
+[2026-07-28T03:16:28.285+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ForecastLab' AIRFLOW_CTX_DAG_ID='etl_pipeline' AIRFLOW_CTX_TASK_ID='analytics_pipeline' AIRFLOW_CTX_EXECUTION_DATE='2026-07-28T02:35:01.505315+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-07-28T02:35:01.505315+00:00'
+[2026-07-28T03:16:28.289+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-07-28T03:16:28.349+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:28.347 | INFO     | scripts.***_tasks:task_analytics_pipeline:54 - Airflow : Analytics Pipeline
+[2026-07-28T03:16:28.357+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:28.356 | INFO     | scripts.load:read_dataframe:68 - Reading data from raw.sales
+[2026-07-28T03:16:38.864+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:38.863 | SUCCESS  | scripts.load:read_dataframe:76 - 190757 rows read from raw.sales
+[2026-07-28T03:16:38.868+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:38.868 | INFO     | scripts.clean:clean_data:25 - Starting data cleaning...
+[2026-07-28T03:16:39.065+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:39.064 | INFO     | scripts.clean:clean_data:32 - Date converted to datetime.
+[2026-07-28T03:16:39.839+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:39.838 | INFO     | scripts.clean:clean_data:42 - String columns cleaned.
+[2026-07-28T03:16:39.845+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:39.845 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'stock_available'.
+[2026-07-28T03:16:39.849+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:39.849 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'delivered_qty'.
+[2026-07-28T03:16:39.853+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:39.853 | INFO     | scripts.clean:clean_data:62 - 3 negative values fixed in 'units_sold'.
+[2026-07-28T03:16:39.855+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:39.855 | SUCCESS  | scripts.clean:clean_data:66 - Data cleaning completed.
+[2026-07-28T03:16:39.857+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:39.856 | INFO     | scripts.transform:transform_data:25 - Starting feature engineering...
+[2026-07-28T03:16:39.989+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:39.988 | SUCCESS  | scripts.transform:transform_data:65 - Feature engineering completed.
+[2026-07-28T03:16:39.990+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:16:39.990 | INFO     | scripts.load:load_dataframe:27 - Loading dataframe to analytics.sales
+[2026-07-28T03:18:38.771+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:18:38.770 | SUCCESS  | scripts.load:load_dataframe:41 - 190757 rows loaded into analytics.sales
+[2026-07-28T03:18:38.773+0000] {logging_mixin.py:190} INFO - 2026-07-28 03:18:38.772 | INFO     | scripts.export:export_dataset:25 - Exporting analytics dataset...
+[2026-07-28T03:20:38.948+0000] {taskinstance.py:3310} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.QueryCanceled: canceling statement due to statement timeout
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/project/scripts/airflow_tasks.py", line 72, in task_analytics_pipeline
+    export_dataset()
+  File "/opt/airflow/project/scripts/export.py", line 33, in export_dataset
+    df = read_table(query)
+         ^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/project/config/database.py", line 62, in read_table
+    df = pd.read_sql(text(query), conn)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 682, in read_sql
+    return pandas_sql.read_query(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1776, in read_query
+    result = self.execute(sql, params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1600, in execute
+    return self.con.execute(sql, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (psycopg2.errors.QueryCanceled) canceling statement due to statement timeout
+
+[SQL: 
+        SELECT *
+        FROM analytics.sales
+        ORDER BY date, sku;
+    ]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2026-07-28T03:20:39.044+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=etl_pipeline, task_id=analytics_pipeline, run_id=manual__2026-07-28T02:35:01.505315+00:00, execution_date=20260728T023501, start_date=20260728T031627, end_date=20260728T032039
+[2026-07-28T03:20:39.086+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-07-28T03:20:39.087+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 17 for task analytics_pipeline ((psycopg2.errors.QueryCanceled) canceling statement due to statement timeout
+
+[SQL: 
+        SELECT *
+        FROM analytics.sales
+        ORDER BY date, sku;
+    ]
+(Background on this error at: https://sqlalche.me/e/14/e3q8); 266)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.QueryCanceled: canceling statement due to statement timeout
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 115, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3004, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3158, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3182, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 406, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/project/scripts/airflow_tasks.py", line 72, in task_analytics_pipeline
+    export_dataset()
+  File "/opt/airflow/project/scripts/export.py", line 33, in export_dataset
+    df = read_table(query)
+         ^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/project/config/database.py", line 62, in read_table
+    df = pd.read_sql(text(query), conn)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 682, in read_sql
+    return pandas_sql.read_query(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1776, in read_query
+    result = self.execute(sql, params)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/sql.py", line 1600, in execute
+    return self.con.execute(sql, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/airflow/.local/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (psycopg2.errors.QueryCanceled) canceling statement due to statement timeout
+
+[SQL: 
+        SELECT *
+        FROM analytics.sales
+        ORDER BY date, sku;
+    ]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[2026-07-28T03:20:39.251+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2026-07-28T03:20:39.286+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-07-28T03:20:39.290+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

@@ -1,0 +1,6 @@
+category,demand_avg_week,demand_std_week,lt_avg_days,lt_std_days,lt_avg_week,lt_std_week,safety_stock,reorder_point
+Yogurt,10641.2,3487.7,3.0,1.4,0.4,0.2,5181.4,9751.0
+SnackBar,5383.5,2098.6,3.0,1.4,0.4,0.2,2894.3,5211.3
+Milk,5104.3,1862.7,3.0,1.4,0.4,0.2,2636.2,4821.8
+ReadyMeal,4808.3,1178.9,3.0,1.4,0.4,0.2,2041.8,4102.6
+Juice,953.1,248.5,3.0,1.4,0.4,0.2,417.6,829.9
