@@ -1,0 +1,4 @@
+Model,Target,Algoritma,R2,MAE,Stakeholder,Keputusan
+1. Demand Forecasting (order-level),units_sold,Gradient Boosting,0.339,6.005,Supply Chain / Gudang,Reorder & safety stock operasional
+2. Revenue Forecasting (order-level),revenue,Gradient Boosting,0.5438,31.55,Finance / Commercial,Budgeting & evaluasi ROI promosi
+3. Weekly Aggregate Demand (per kategori),total_units/minggu,Gradient Boosting,0.9463,368.0,Category / Supply Planning,Volume procurement mingguan
